@@ -1,0 +1,10 @@
+App C
+https://github.com/rodrigokamada/angular-amazon-cognito
+
+
+-- API Call
+https://www.youtube.com/watch?v=ROwjNYlxMAs&ab_channel=TKousek
+
+
+-- Auth with Cognito
+https://www.youtube.com/watch?v=o7OHogUcRmI&ab_channel=FocusOtter
