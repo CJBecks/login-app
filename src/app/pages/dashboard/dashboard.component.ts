@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { CognitoService } from 'src/app/cognito.service';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 // core components
 import {
@@ -21,6 +23,9 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+
+  constructor(private cognitoService: CognitoService, private http: HttpClient){
+  }
 
   ngOnInit() {
 
@@ -51,6 +56,22 @@ export class DashboardComponent implements OnInit {
 		});
   }
 
+  public callEndpoint() {
+    this.cognitoService.getJwtForActiveUser().then((token) => {
+
+      const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`
+        });
+    
+      const requestOptions = { headers: headers };
+        
+      this.http
+          .get('https://dzdggqurla.execute-api.us-east-1.amazonaws.com/test', requestOptions)
+          .subscribe((res: any) => {
+              console.log(res);
+          });
+    });   
+  }
 
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;

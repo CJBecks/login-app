@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify, Auth} from "aws-amplify";
 
 import { environment } from "../environments/environment";
 
@@ -78,6 +78,13 @@ export class CognitoService {
   public updateUser(user: IUser): Promise<any> {
     return Auth.currentUserPoolUser().then((cognitoUser: any) => {
       return Auth.updateUserAttributes(cognitoUser, user);
+    });
+  }
+
+  public getJwtForActiveUser() {
+    return Auth.currentSession().then((cognitoUser: any) => {
+      console.log(cognitoUser);
+      return cognitoUser.getIdToken().getJwtToken();
     });
   }
 }
