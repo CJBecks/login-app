@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
-import { CognitoService } from 'src/app/cognito.service';
+import { CognitoService } from 'src/app/common/cognito.service';
 
 @Component({
   selector: 'app-navbar',

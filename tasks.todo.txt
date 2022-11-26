@@ -1,0 +1,7 @@
+TODO:
+- Form
+    - Validation
+    - Improve Styling (dropshadow on focus)
+    - Fix Ugly Input selection
+- Federated User Sign-Up (Google, Facebook)
+- Test if the route guard is working properly

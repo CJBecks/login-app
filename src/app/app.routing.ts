@@ -7,7 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 // Auth
-import { AuthGuardService } from "./auth-guard.service";
+import { AuthGuardService } from "./common/auth-guard.service";
 
 const routes: Routes =[
   {

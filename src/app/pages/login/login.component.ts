@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
-import { IUser, CognitoService } from "src/app/cognito.service";
+import { IUser, CognitoService } from "src/app/common/cognito.service";
 
 @Component({
   selector: "app-login",

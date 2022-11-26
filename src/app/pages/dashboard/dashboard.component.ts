@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-import { CognitoService } from 'src/app/cognito.service';
+import { CognitoService } from 'src/app/common/cognito.service';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 // core components
