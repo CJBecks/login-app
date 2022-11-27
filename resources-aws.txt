@@ -8,3 +8,16 @@ https://www.youtube.com/watch?v=ROwjNYlxMAs&ab_channel=TKousek
 
 -- Auth with Cognito
 https://www.youtube.com/watch?v=o7OHogUcRmI&ab_channel=FocusOtter
+
+
+-- OLDER Example
+https://github.com/amazon-archives/aws-cognito-angular-quickstart
+
+-- Github Deploy To S3
+https://dev.to/rodrigokamada/hosting-an-angular-application-on-amazon-s3-using-github-actions-3h6g
+
+Deploy to S3:
+aws s3 sync ./dist s3://login-app-site
+
+Serve from dist:
+http-server ./dist;
