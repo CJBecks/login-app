@@ -1,10 +1,11 @@
-<div class="header bg-gradient-danger py-7 py-lg-8">
+<div class="header bg-gradient-danger py-8 py-lg-8">
   <div class="container">
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+          <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for
+            free.</p>
         </div>
       </div>
     </div>
@@ -16,10 +17,11 @@
   </div>
 </div>
 <!-- Page content -->
-<div class="container mt--8 pb-5">
+<div class="container mt--9 pb-5">
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
+
         <!-- <div class="card-header bg-transparent pb-5">
           <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
           <div class="btn-wrapper text-center">
@@ -33,70 +35,69 @@
             </a>
           </div>
         </div> -->
+
         <div class="card-body px-lg-5 py-lg-5">
           <div class="text-center text-muted mb-4">
             <small>Sign in with credentials</small>
           </div>
 
-          <!-- <div class="row justify-content-center my-5">
-            <div class="col-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col mb-2">
-                      <label for="email" class="form-label">Email:</label>
-                      <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control form-control-sm">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col mb-2">
-                      <label for="password" class="form-label">Password:</label>
-                      <div class="input-group input-group-sm">
-                        <input [type]="user.showPassword ? 'text' : 'password'" id="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control form-control-sm">
-                        <button type="button" class="btn btn-outline-secondary" (click)="user.showPassword = !user.showPassword">
-                          <i class="bi" [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col d-grid">
-                      <button type="button" (click)="signIn()" class="btn btn-sm btn-success" [disabled]="loading">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
-                        Sign in
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-          <form role="form">
+            <!-- <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                </div>
+                <input type="text" formControlName="name" placeholder="Name" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.name.errors }" autocomplete="name" />
+              </div>
+              <div *ngIf="submitted && f.name.errors" class="custom-invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div> -->
+
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Email" type="email" #email="ngModel" [(ngModel)]="user.email">
+                <input type="text" formControlName="email" placeholder="Email" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="email" />
+              </div>
+              <div *ngIf="submitted && f.email.errors" class="custom-invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
               </div>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" #password="ngModel" [(ngModel)]="user.password">
+                <input type="password" formControlName="password" placeholder="Password" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="on" />
+              </div>
+              <div *ngIf="submitted && f.password.errors" class="custom-invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
               </div>
             </div>
+
+
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
               <label class="custom-control-label" for=" customCheckLogin">
                 <span class="text-muted">Remember me</span>
               </label>
             </div>
-            <div class="text-center">
-              <button type="button" class="btn btn-primary my-4" (click)="signIn()">Sign in</button>
+
+            <div class="text-center mt-3">
+              <button class="btn btn-primary mr-1" [disabled]="signingIn">Sign In</button>
+            </div>
+
+            <div *ngIf="failed" class="failed-form">
+              Incorrect username or password.
             </div>
           </form>
 
@@ -111,5 +112,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
