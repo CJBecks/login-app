@@ -8,6 +8,8 @@ export class AuthGuardService implements CanActivate {
   constructor(public auth: CognitoService, public router: Router) {}
   canActivate() {
     return new Promise<boolean>((resolve, reject) => {
+        debugger;
+        console.log('here');
         this.auth.isAuthenticated()
             .then((data) => {
                 if (data) {

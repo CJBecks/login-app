@@ -9,8 +9,8 @@ import { IUser, CognitoService } from "src/app/common/cognito.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  signingIn : boolean;
-  registerForm: FormGroup;
+  signingIn : boolean = false;
+  signInForm: FormGroup;
   submitted = false;
   failed = false;
 
@@ -18,34 +18,30 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private cognitoService: CognitoService,
     private formBuilder: FormBuilder
-  ) {
-    this.signingIn  = false;
-  }
+  ) {}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      // name: ["", Validators.required],
+    this.signInForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(6)]],
-      // acceptTerms: [false, Validators.requiredTrue],
     });
   }
   ngOnDestroy() {}
 
   // convenience getter for easy access to form fields
   get f() {
-    return this.registerForm.controls;
+    return this.signInForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
+    if (this.signInForm.invalid) {
       return;
     }
 
-    this.signIn(this.registerForm.value);
+    this.signIn(this.signInForm.value);
   }
 
   private signIn(user: IUser): void {

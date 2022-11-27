@@ -1,0 +1,18 @@
+@import 'src/assets/scss/argon.scss';
+
+// No autofill color
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: $input-color !important;
+}
+
+.failed-form, .custom-invalid-feedback {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 80%;
+    color: #fb6340;
+}
+

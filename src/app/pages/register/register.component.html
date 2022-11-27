@@ -42,69 +42,81 @@
 						<small>Sign up with credentials</small>
 					</div>
 
-					<form role="form" *ngIf="!isConfirm">
-						<!-- TODO: Add Form Validation Here -->
-						<div class="form-group">
-							<div class="input-group input-group-alternative mb-3">
+					<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!isConfirm">
+
+						<div class="form-group mb-3">
+							<div class="input-group input-group-alternative">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+									<span class="input-group-text"><i class="ni ni-single-02"></i></span>
 								</div>
-								<input class="form-control" placeholder="Name" type="text" #name="ngModel"
-									[(ngModel)]="user.name">
+								<input type="text" formControlName="name" placeholder="Name" class="form-control"
+									[ngClass]="{ 'is-invalid': submitted && f.name.errors }" autocomplete="name" />
+							</div>
+							<div *ngIf="submitted && f.name.errors" class="custom-invalid-feedback">
+								<div *ngIf="f.name.errors.required">Name is required</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="input-group input-group-alternative mb-3">
+
+						<div class="form-group mb-3">
+							<div class="input-group input-group-alternative">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="ni ni-email-83"></i></span>
 								</div>
-								<input class="form-control" placeholder="Email" type="email" #email="ngModel"
-									[(ngModel)]="user.email">
+								<input type="text" formControlName="email" placeholder="Email" class="form-control"
+									[ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="email" />
+							</div>
+							<div *ngIf="submitted && f.email.errors" class="custom-invalid-feedback">
+								<div *ngIf="f.email.errors.required">Email is required</div>
+								<div *ngIf="f.email.errors.email">Email must be a valid email address</div>
 							</div>
 						</div>
-						<div class="form-group">
+
+						<div class="form-group mb-3">
 							<div class="input-group input-group-alternative">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
 								</div>
-								<input class="form-control" placeholder="Password" type="password" #password="ngModel"
-									[(ngModel)]="user.password">
+								<input type="password" formControlName="password" placeholder="Password"
+									class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+									autocomplete="on" />
+							</div>
+							<div *ngIf="submitted && f.password.errors" class="custom-invalid-feedback">
+								<div *ngIf="f.password.errors.required">Password is required</div>
+								<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
 							</div>
 						</div>
-						<!-- <div class="text-muted font-italic"><small>password strength: <span
-									class="text-success font-weight-700">strong</span></small></div> -->
-						<!-- <div class="row my-4">
-							<div class="col-12">
-								<div class="custom-control custom-control-alternative custom-checkbox">
-									<input class="custom-control-input" id="customCheckRegister" type="checkbox">
-									<label class="custom-control-label" for="customCheckRegister">
-										<span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-									</label>
-								</div>
-							</div>
-						</div> -->
-						<div class="text-center">
-							<button type="button" class="btn btn-primary mt-4" (click)="signUp()">Create
-								account</button>
+
+						<div class="text-center mt-3">
+							<button class="btn btn-primary mr-1" [disabled]="registering">Create Account</button>
+						</div>
+
+						<div *ngIf="failed" class="failed-form mt-5">
+							An account with the given email already exists.
 						</div>
 					</form>
 
-					<form role="form" *ngIf="isConfirm">
-						<div class="form-group">
-							<div class="input-group input-group-alternative mb-3">
+					<form [formGroup]="codeForm" (ngSubmit)="onCodeSubmit()" *ngIf="isConfirm">
+						<div class="form-group mb-3">
+							<div class="input-group input-group-alternative">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+									<span class="input-group-text"><i class="ni ni-key-25"></i></span>
 								</div>
-								<input class="form-control" placeholder="Code" type="text" #code="ngModel"
-									[(ngModel)]="user.code">
+								<input type="text" formControlName="code" placeholder="Verification Code"
+									class="form-control" [ngClass]="{ 'is-invalid': submitted && c.code.errors }" />
+							</div>
+							<div *ngIf="submitted && c.code.errors" class="custom-invalid-feedback">
+								<div *ngIf="c.code.errors.required">Verification code is required</div>
 							</div>
 						</div>
 
-						<div class="text-center">
-							<button type="button" class="btn btn-primary mt-4" (click)="confirmSignUp()">Create account</button>
+						<div class="text-center mt-3">
+							<button class="btn btn-primary mr-1" [disabled]="registering">Verify</button>
+						</div>
+
+						<div *ngIf="failed" class="failed-form mt-5">
+							Invalid verification code provided, please try again.
 						</div>
 					</form>
-
 				</div>
 			</div>
 		</div>

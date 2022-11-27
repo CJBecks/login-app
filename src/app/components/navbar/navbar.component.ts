@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
   public signOut(): void {
     this.cognitoService.signOut()
     .then(() => {
-      // this.router.navigate(['/signIn']);
+      this.router.navigate(['/signIn']);
     });
   }
 }
