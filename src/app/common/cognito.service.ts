@@ -38,6 +38,14 @@ export class CognitoService {
     return Auth.confirmSignUp(user.email, user.code);
   }
 
+  public forgotPassword(user: IUser): Promise<any> {
+    return Auth.forgotPassword(user.email);
+  }
+
+  public forgotPasswordSubmit(user: IUser): Promise<any> {
+    return Auth.forgotPasswordSubmit(user.email, user.code, user.password);
+  }
+
   public signIn(user: IUser): Promise<any> {
     return Auth.signIn(user.email, user.password).then(() => {
       this.authenticationSubject.next(true);
@@ -83,7 +91,6 @@ export class CognitoService {
 
   public getJwtForActiveUser() {
     return Auth.currentSession().then((cognitoUser: any) => {
-      console.log(cognitoUser);
       return cognitoUser.getIdToken().getJwtToken();
     });
   }

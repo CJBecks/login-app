@@ -1,17 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { IUser, CognitoService } from "src/app/common/cognito.service";
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"],
+  selector: "app-forgot-password",
+  templateUrl: "./forgot-password.component.html",
+  styleUrls: ["./forgot-password.component.scss"],
 })
-export class RegisterComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
   isConfirm: boolean;
-  registerForm: FormGroup;
-  codeForm: FormGroup;
+  forgotPasswordForm: FormGroup;
+  resetPasswordForm: FormGroup;
   user: IUser;
 
   submitted = false;
@@ -28,54 +28,53 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      name: ["", Validators.required],
-      email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(6)]],
-      // acceptTerms: [false, Validators.requiredTrue],
+    this.forgotPasswordForm = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]]
     });
 
-    this.codeForm = this.formBuilder.group({
-      code: ["", Validators.required]
+    this.resetPasswordForm = this.formBuilder.group({
+      code: ["", Validators.required],
+      password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
   // convenience getter for easy access to form fields
   get f() {
-    return this.registerForm.controls;
+    return this.forgotPasswordForm.controls;
   }
 
   get c() {
-    return this.codeForm.controls;
+    return this.resetPasswordForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
+    if (this.forgotPasswordForm.invalid) {
       return;
     }
 
-    this.signUp(this.registerForm.value);
+    this.resetPassword(this.forgotPasswordForm.value);
   }
 
   onCodeSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.codeForm.invalid) {
+    if (this.resetPasswordForm.invalid) {
       return;
     }
 
-    this.user.code = this.codeForm.value.code;
-    this.confirmSignUp(this.user);
+    this.user.code = this.resetPasswordForm.value.code;
+    this.user.password = this.resetPasswordForm.value.password;
+    this.confirmPasswordReset(this.user);
   }
 
-  public signUp(user: IUser): void {
+  public resetPassword(user: IUser): void {
     this.registering = true;
     this.cognitoService
-      .signUp(user)
+      .forgotPassword(user)
       .then(() => {
         this.registering = false;
         this.isConfirm = true;
@@ -89,10 +88,10 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  public confirmSignUp(user: IUser): void {
+  public confirmPasswordReset(user: IUser): void {
     this.registering = true;
     this.cognitoService
-      .confirmSignUp(user)
+      .forgotPasswordSubmit(user)
       .then(() => {
         this.registering = false;
         this.router.navigate(["/signIn"]);
