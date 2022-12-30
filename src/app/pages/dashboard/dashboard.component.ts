@@ -70,7 +70,8 @@ export class DashboardComponent implements OnInit {
           .subscribe((res: any) => {
               console.log(res);
           });
-    });   
+    });
+    console.log(this.cognitoService);
   }
 
   public updateOptions() {

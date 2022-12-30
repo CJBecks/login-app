@@ -10,6 +10,7 @@ export class AdminLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // TODO: Set user data on page refresh here
   }
 
 }

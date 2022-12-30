@@ -35,4 +35,6 @@ export class SidebarComponent implements OnInit {
       this.isCollapsed = true;
    });
   }
+
+  // TODO: Logout
 }
