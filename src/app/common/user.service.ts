@@ -16,7 +16,6 @@ export class UserService {
   private _activeUser: IAuthenticatedUser = undefined;
 
   get activeUser(): IAuthenticatedUser {
-    // TODO: Check session storage if its not set
     return this._activeUser;
   }
 

@@ -23,11 +23,14 @@
         </div>
       </li>
       <li class="nav-item" ngbDropdown placement="bottom-right">
-        <a class="nav-link" role="button" ngbDropdownToggle>
+        <a class="nav-link px-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
-            <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">
+            <span class="avatar avatar-sm">
+              <img src="assets/img/theme/no-profile-picture-icon-inverse.svg" class="no-profile-icon">
             </span>
+            <div class="media-body ml-2">
+              <span class="mb-0 text-sm font-weight-bold">{{ userService.activeUser.name }}</span>
+            </div>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
@@ -51,7 +54,7 @@
             <span>Support</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <a class="dropdown-item" (click)="signOut()">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>
@@ -77,7 +80,8 @@
         </div>
       </div>
       <!-- Form -->
-      <form class="mt-4 mb-3 d-md-none">
+      <!-- NO GLOBAL SEARCH YET -->
+      <!-- <form class="mt-4 mb-3 d-md-none">
         <div class="input-group input-group-rounded input-group-merge">
           <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
           <div class="input-group-prepend">
@@ -86,7 +90,7 @@
             </div>
           </div>
         </div>
-      </form>
+      </form> -->
       <!-- Navigation -->
       <ul class="navbar-nav">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
@@ -103,18 +107,8 @@
       <!-- Navigation -->
       <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
-          <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-angular/documentation/tutorial">
+          <a class="nav-link">
             <i class="ni ni-spaceship"></i> Getting started
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-angular/documentation/colors">
-            <i class="ni ni-palette"></i> Foundation
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-angular/documentation/alerts">
-            <i class="ni ni-ui-04"></i> Components
           </a>
         </li>
       </ul>
