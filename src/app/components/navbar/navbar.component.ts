@@ -3,6 +3,7 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { CognitoService } from 'src/app/common/cognito.service';
+import { UserService } from 'src/app/common/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  constructor(location: Location,  private element: ElementRef, private router: Router, private cognitoService: CognitoService) {
+  constructor(public userService: UserService, location: Location,  private element: ElementRef, private router: Router, private cognitoService: CognitoService) {
     this.location = location;
   }
 
