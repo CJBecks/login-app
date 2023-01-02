@@ -5,3 +5,13 @@ TODO:
     - Fix Ugly Input selection
 - Federated User Sign-Up (Google, Facebook)
 - Test if the route guard is working properly
+
+
+AutoMall.ca
+
+
+https://rapidapi.com/competitive-intelligence-solutions-llc-competitive-intelligence-solutions-llc-default/api/cis-automotive
+
+https://rapidapi.com/vinfreecheck/api/vin-decoder-1/
+
+https://rapidapi.com/collection/autotrader-api
