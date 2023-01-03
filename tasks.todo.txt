@@ -15,3 +15,7 @@ https://rapidapi.com/competitive-intelligence-solutions-llc-competitive-intellig
 https://rapidapi.com/vinfreecheck/api/vin-decoder-1/
 
 https://rapidapi.com/collection/autotrader-api
+
+
+FLOW CHART FOR WHERE TO PUT MONEY
+https://i.imgur.com/zlGnuDO.png
