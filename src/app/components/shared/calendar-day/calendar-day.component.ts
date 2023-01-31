@@ -8,7 +8,8 @@ import { Component, OnInit } from "@angular/core";
 export class CalendarDayComponent implements OnInit {
 
     public choices: IChoices;
-    public value: any = 1;
+
+    public isActive:boolean = false;
 
     public calendarDayData: ICalendarDayComponentDataset = {
         twoDaysFromNow: { date: new Date(new Date().setDate(new Date().getDate() + 2)) },
@@ -31,13 +32,24 @@ export class CalendarDayComponent implements OnInit {
         // Get values from local-storage if they exist.
         this.calendarDayData.twoDaysAgo.value = 1;
         this.calendarDayData.twoDaysAgo.color = this.choices[this.calendarDayData.twoDaysAgo.value].color;
+        this.calendarDayData.twoDaysAgo.description = this.choices[this.calendarDayData.twoDaysAgo.value].description;
 
         this.calendarDayData.yesterday.value = 2;
         this.calendarDayData.yesterday.color = this.choices[this.calendarDayData.yesterday.value].color;
+        this.calendarDayData.yesterday.description = this.choices[this.calendarDayData.twoDaysAgo.value].description;
+
     }
 
-    ngOnInit() {}
-}
+    ngOnInit() {
+        setTimeout(() => {
+            this.isActive = true;
+        }, 250);
+    }
+
+    public selection(item: { description: string, color: string }):void {
+        this.calendarDayData.today.description = item.description;
+    }
+} 
 
 // Calendar Day Interfaces
 export interface ICalendarDayComponentDataset {
@@ -52,6 +64,7 @@ export interface ICalendarDay {
     date: Date;
     value?: number;
     color?: string;
+    description?: string,
 }
 
 

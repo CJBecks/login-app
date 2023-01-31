@@ -1,114 +1,116 @@
-<div style="height: 500px; width: 100%;">
-    <div class="signboard outer">
-
-        <!-- Current -->
-        <div class="signboard today inner anim04c"
-            [style.background-color]="calendarDayData.today.color != null ? calendarDayData.today.color : 'lightgray'">
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <p>{{ calendarDayData.today.date | date }}</p>
-            </div>
-
-            <!-- <li class="year anim04c">
-                <span>YEAR</span>
-            </li>
-            <ul class="calendarMain anim04c">
-                <li class="month anim04c">
-                    <span>month</span>
-                </li>
-                <li class="date anim04c">
-                    <span>date</span>
-                </li>
-                <li class="day anim04c">
-                    <span>day</span>
-                </li>
-            </ul> -->
-            <li class="clock minute anim04c">
-                <span></span>
-            </li>
-            <li class="calendarNormal date2 anim04c"
-                [style.color]="calendarDayData.today.color != null ? calendarDayData.today.color : 'gray'">
-                <span>{{ calendarDayData.today.date | date }}</span>
-            </li>
-        </div>
-
-        <!-- Future -->
-        <div class="signboard twoDaysFromNow inner anim04c"
-            [style.background-color]="calendarDayData.twoDaysFromNow.color != null ? calendarDayData.twoDaysFromNow.color : 'lightgray'">
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <p>{{ calendarDayData.twoDaysFromNow.date | date }}</p>
-            </div>
-            <li class="clock hour anim04c">
-                <span></span>
-            </li>
-            <li class="calendarNormal day2 anim04c"
-                [style.color]="calendarDayData.twoDaysFromNow.color != null ? calendarDayData.twoDaysFromNow.color : 'gray'">
-                <span>{{ calendarDayData.twoDaysFromNow.date | date }}</span>
-            </li>
-        </div>
-        <div class="signboard tomorrow inner anim04c"
-            [style.background-color]="calendarDayData.tomorrow.color != null ? calendarDayData.tomorrow.color : 'lightgray'">
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <p>{{ calendarDayData.tomorrow.date | date }}</p>
-            </div>
-            <li class="clock second anim04c">
-                <span></span>
-            </li>
-            <li class="calendarNormal month2 anim04c"
-                [style.color]="calendarDayData.tomorrow.color != null ? calendarDayData.tomorrow.color : 'gray'">
-                <span>{{ calendarDayData.tomorrow.date | date }}</span>
-            </li>
-        </div>
-
-        <!-- Past -->
-        <div class="signboard twoDaysAgo inner anim04c"
-            [style.background-color]="calendarDayData.twoDaysAgo.color != null ? calendarDayData.twoDaysAgo.color : 'lightgray'">
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <p>{{ calendarDayData.twoDaysAgo.date | date }}</p>
-            </div>
-            <li class="clock hour anim04c">
-                <span></span>
-            </li>
-            <li class="calendarNormal day2 anim04c"
-                [style.color]="calendarDayData.twoDaysAgo.color != null ? calendarDayData.twoDaysAgo.color : 'gray'">
-                <span>{{ calendarDayData.twoDaysAgo.date | date }}</span>
-            </li>
-        </div>
-        <div class="signboard yesterday inner anim04c"
-            [style.background-color]="calendarDayData.yesterday.color != null ? calendarDayData.yesterday.color : 'lightgray'">
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <p>{{ calendarDayData.yesterday.date | date }}</p>
-            </div>
-            <li class="clock second anim04c">
-                <span></span>
-            </li>
-            <li class="calendarNormal month2 anim04c"
-                [style.color]="calendarDayData.yesterday.color != null ? calendarDayData.yesterday.color : 'gray'">
-                <span>{{ calendarDayData.yesterday.date | date }}</span>
-            </li>
-        </div>
-    </div>
-</div>
-
 <!-- Setter -->
 <div class="card card-stats mb-4 mb-xl-0">
     <div class="card-body">
-      <div class="row">
-        <div class="col">
-          <h5 class="card-title text-uppercase text-muted mb-0">Set Value for today (<b>{{ calendarDayData.today.date | date }}</b>)</h5>
+
+        <div class="row">
+            <div class="col">
+                <h6 class="text-uppercase text-muted ls-1 mb-1">Calendar</h6>
+                <h2 class="mb-0">By Day</h2>
+            </div>
+            <div class="col-auto">
+                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+            </div>
         </div>
-        <div class="col-auto">
-          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-            <i class="fas fa-chart-bar"></i>
-          </div>
+
+
+        <div style="height: 500px; width: 100%;">
+            <div class="signboard outer" [class.active]="isActive">
+
+                <!-- Current -->
+                <div class="signboard today inner anim04c"
+                    [style.background-color]="calendarDayData.today.color != null ? calendarDayData.today.color : 'lightgray'">
+                    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                        <div>
+                            <p class="d-block">{{ calendarDayData.today.date | date }}</p>
+                            <p class="d-block">{{ calendarDayData.today.description ? calendarDayData.today.description
+                                : '' }}</p>
+                        </div>
+                    </div>
+
+                    <li class="calendarNormal date2 anim04c"
+                        [style.color]="calendarDayData.today.color != null ? calendarDayData.today.color : 'gray'">
+                        <span>{{ calendarDayData.today.date | date }}</span>
+                    </li>
+                </div>
+
+                <!-- Future -->
+                <div class="signboard twoDaysFromNow inner anim04c"
+                    [style.background-color]="calendarDayData.twoDaysFromNow.color != null ? calendarDayData.twoDaysFromNow.color : 'lightgray'">
+                    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                        <div>
+                            <p class="d-block">{{ calendarDayData.twoDaysFromNow.date | date }}</p>
+                            <p class="d-block">{{ calendarDayData.twoDaysFromNow.description ?
+                                calendarDayData.twoDaysFromNow.description : '' }}</p>
+                        </div>
+                    </div>
+                    <li class="calendarNormal day2 anim04c"
+                        [style.color]="calendarDayData.twoDaysFromNow.color != null ? calendarDayData.twoDaysFromNow.color : 'gray'">
+                        <span>{{ calendarDayData.twoDaysFromNow.date | date }}</span>
+                    </li>
+                </div>
+                <div class="signboard tomorrow inner anim04c"
+                    [style.background-color]="calendarDayData.tomorrow.color != null ? calendarDayData.tomorrow.color : 'lightgray'">
+                    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                        <div>
+                            <p class="d-block">{{ calendarDayData.tomorrow.date | date }}</p>
+                            <p class="d-block">{{ calendarDayData.tomorrow.description ?
+                                calendarDayData.tomorrow.description : '' }}</p>
+                        </div>
+                    </div>
+                    <li class="calendarNormal month2 anim04c"
+                        [style.color]="calendarDayData.tomorrow.color != null ? calendarDayData.tomorrow.color : 'gray'">
+                        <span>{{ calendarDayData.tomorrow.date | date }}</span>
+                    </li>
+                </div>
+
+                <!-- Past -->
+                <div class="signboard twoDaysAgo inner anim04c"
+                    [style.background-color]="calendarDayData.twoDaysAgo.color != null ? calendarDayData.twoDaysAgo.color : 'lightgray'">
+                    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                        <div>
+                            <p class="d-block">{{ calendarDayData.twoDaysAgo.date | date }}</p>
+                            <p class="d-block">{{ calendarDayData.twoDaysAgo.description ?
+                                calendarDayData.twoDaysAgo.description : '' }}</p>
+                        </div>
+                    </div>
+                    <li class="calendarNormal day2 anim04c"
+                        [style.color]="calendarDayData.twoDaysAgo.color != null ? calendarDayData.twoDaysAgo.color : 'gray'">
+                        <span>{{ calendarDayData.twoDaysAgo.date | date }}</span>
+                    </li>
+                </div>
+                <div class="signboard yesterday inner anim04c"
+                    [style.background-color]="calendarDayData.yesterday.color != null ? calendarDayData.yesterday.color : 'lightgray'">
+                    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                        <div>
+                            <p class="d-block">{{ calendarDayData.yesterday.date | date }}</p>
+                            <p class="d-block">{{ calendarDayData.yesterday.description ?
+                                calendarDayData.yesterday.description : '' }}</p>
+                        </div>
+                    </div>
+                    <li class="calendarNormal month2 anim04c"
+                        [style.color]="calendarDayData.yesterday.color != null ? calendarDayData.yesterday.color : 'gray'">
+                        <span>{{ calendarDayData.yesterday.date | date }}</span>
+                    </li>
+                </div>
+            </div>
         </div>
-      </div>
-    
-      <div *ngFor="let item of choices | keyvalue">
-          <label class="my-1" for="enum_answer_{{item.key}}">
-              <input style="display: none;" id="enum_answer_{{item.key}}" [value]='item.value.color' type="radio" name="choices" [(ngModel)]="calendarDayData.today.color">
-              <span class="dot mx-2" [style.background-color]="item.value.color"></span>
-              <span>{{ item.value.description }}</span>
-          </label>
-      </div>
+
+        <div class="row">
+            <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Set Value for today (<b>{{
+                        calendarDayData.today.date | date }}</b>)</h5>
+            </div>
+        </div>
+
+        <div *ngFor="let item of choices | keyvalue">
+            <label class="my-1" for="enum_answer_{{item.key}}">
+                <input style="display: none;" id="enum_answer_{{item.key}}" [value]='item.value.color' type="radio"
+                    name="choices" [(ngModel)]="calendarDayData.today.color" (click)="selection(item.value)">
+                <span class="dot mx-2" [style.background-color]="item.value.color"></span>
+                <span>{{ item.value.description }}</span>
+            </label>
+        </div>
     </div>
-  </div>
+</div>

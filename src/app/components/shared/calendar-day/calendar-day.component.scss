@@ -79,7 +79,7 @@ section {
     border: 0;
     font-weight: inherit;
     font-style: inherit;
-    font-size: 100%;
+    font-size: inherit;
     font-family: inherit;
     vertical-align: baseline;
     text-decoration: none;
@@ -193,14 +193,16 @@ body {
 }
 /*-----*/
 
-.outer:active .inner {
+.outer:active .inner,
+.outer.active .inner {
     -webkit-transform: rotate(0) translate(0) scale(0.9);
     -moz-transform: rotate(0) translate(0) scale(0.9);
     -ms-transform: rotate(0) translate(0) scale(0.9);
     -o-transform: rotate(0) translate(0) scale(0.9);
     transform: rotate(0) translate(0) scale(0.9);
 }
-.outer:active .today {
+.outer:active .today,
+.outer.active .today {
     -webkit-transform: rotate(0) translate(0);
     -moz-transform: rotate(0) translate(0);
     -ms-transform: rotate(0) translate(0);
@@ -208,32 +210,16 @@ body {
     transform: rotate(0) translate(0);
 }
 
-// .outer:active .today .date {
-//     -webkit-transform: scale(0);
-//     -moz-transform: scale(0);
-//     -ms-transform: scale(0);
-//     -o-transform: scale(0);
-//     transform: scale(0);
-// }
-// .outer:active .today .day,
-// .outer:active .today .month {
-//     visibility: hidden;
-//     opacity: 0;
-//     -webkit-transform: scale(0);
-//     -moz-transform: scale(0);
-//     -ms-transform: scale(0);
-//     -o-transform: scale(0);
-//     transform: scale(0);
-// }
-
-.outer:active .twoDaysFromNow {
+.outer:active .twoDaysFromNow,
+.outer.active .twoDaysFromNow {
     -webkit-transform: rotate(+2deg) translateX(+480px) scale(0.9);
     -moz-transform: rotate(+2deg) translateX(+480px) scale(0.9);
     -ms-transform: rotate(+2deg) translateX(+480px) scale(0.9);
     -o-transform: rotate(+2deg) translateX(+480px) scale(0.9);
     transform: rotate(+2deg) translateX(+480px) scale(0.9);
 }
-.outer:active .tomorrow {
+.outer:active .tomorrow,
+.outer.active .tomorrow {
     -webkit-transform: rotate(+5deg) translateX(+240px) scale(0.9);
     -moz-transform: rotate(+5deg) translateX(+240px) scale(0.9);
     -ms-transform: rotate(+5deg) translateX(+240px) scale(0.9);
@@ -242,14 +228,16 @@ body {
 }
 
 
-.outer:active .yesterday {
+.outer:active .yesterday,
+.outer.active .yesterday {
     -webkit-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     -moz-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     -ms-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     -o-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     transform: rotate(-5deg) translateX(-240px) scale(0.9);
 }
-.outer:active .twoDaysAgo {
+.outer:active .twoDaysAgo,
+.outer.active .twoDaysAgo {
     -webkit-transform: rotate(-2deg) translateX(-480px) scale(0.9);
     -moz-transform: rotate(-2deg) translateX(-480px) scale(0.9);
     -ms-transform: rotate(-2deg) translateX(-480px) scale(0.9);
@@ -257,22 +245,26 @@ body {
     transform: rotate(-2deg) translateX(-480px) scale(0.9);
 }
 /*-----*/
-.outer:active .calendarMain {
+.outer:active .calendarMain,
+.outer.active .calendarMain {
     -webkit-transform: scale(1.8);
     opacity: 0;
     visibility: hidden;
 }
-.outer:active .clock {
+.outer:active .clock,
+.outer.active .clock {
     -webkit-transform: scale(1.4);
     opacity: 1;
     visibility: visible;
 }
-.outer:active .calendarNormal {
+.outer:active .calendarNormal,
+.outer.active .calendarNormal {
     bottom: -30px;
     opacity: 1;
     visibility: visible;
 }
-.outer:active .year {
+.outer:active .year,
+.outer.active .year {
     top: -30px;
     opacity: 1;
     visibility: visible;
