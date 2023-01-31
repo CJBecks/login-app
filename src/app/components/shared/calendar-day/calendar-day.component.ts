@@ -11,7 +11,9 @@ export class CalendarDayComponent implements OnInit {
     public value: any = 1;
 
     public calendarDayData: ICalendarDayComponentDataset = {
-        today: { date: new Date(), value: null, color: null },
+        twoDaysFromNow: { date: new Date(new Date().setDate(new Date().getDate() + 2)) },
+        tomorrow: { date: new Date(new Date().setDate(new Date().getDate() + 1)) },
+        today: { date: new Date() },
         yesterday: { date: new Date(new Date().setDate(new Date().getDate() - 1)) },
         twoDaysAgo: { date: new Date(new Date().setDate(new Date().getDate() - 2)) },
     };
@@ -39,6 +41,8 @@ export class CalendarDayComponent implements OnInit {
 
 // Calendar Day Interfaces
 export interface ICalendarDayComponentDataset {
+    twoDaysFromNow: ICalendarDay;
+    tomorrow: ICalendarDay;
     today: ICalendarDay;
     yesterday: ICalendarDay;
     twoDaysAgo: ICalendarDay;

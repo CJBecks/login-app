@@ -1,6 +1,8 @@
 <div style="height: 500px; width: 100%;">
     <div class="signboard outer">
-        <div class="signboard front inner anim04c"
+
+        <!-- Current -->
+        <div class="signboard today inner anim04c"
             [style.background-color]="calendarDayData.today.color != null ? calendarDayData.today.color : 'lightgray'">
             <div class="d-flex justify-content-center align-items-center w-100 h-100">
                 <p>{{ calendarDayData.today.date | date }}</p>
@@ -28,7 +30,37 @@
                 <span>{{ calendarDayData.today.date | date }}</span>
             </li>
         </div>
-        <div class="signboard left inner anim04c"
+
+        <!-- Future -->
+        <div class="signboard twoDaysFromNow inner anim04c"
+            [style.background-color]="calendarDayData.twoDaysFromNow.color != null ? calendarDayData.twoDaysFromNow.color : 'lightgray'">
+            <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                <p>{{ calendarDayData.twoDaysFromNow.date | date }}</p>
+            </div>
+            <li class="clock hour anim04c">
+                <span></span>
+            </li>
+            <li class="calendarNormal day2 anim04c"
+                [style.color]="calendarDayData.twoDaysFromNow.color != null ? calendarDayData.twoDaysFromNow.color : 'gray'">
+                <span>{{ calendarDayData.twoDaysFromNow.date | date }}</span>
+            </li>
+        </div>
+        <div class="signboard tomorrow inner anim04c"
+            [style.background-color]="calendarDayData.tomorrow.color != null ? calendarDayData.tomorrow.color : 'lightgray'">
+            <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                <p>{{ calendarDayData.tomorrow.date | date }}</p>
+            </div>
+            <li class="clock second anim04c">
+                <span></span>
+            </li>
+            <li class="calendarNormal month2 anim04c"
+                [style.color]="calendarDayData.tomorrow.color != null ? calendarDayData.tomorrow.color : 'gray'">
+                <span>{{ calendarDayData.tomorrow.date | date }}</span>
+            </li>
+        </div>
+
+        <!-- Past -->
+        <div class="signboard twoDaysAgo inner anim04c"
             [style.background-color]="calendarDayData.twoDaysAgo.color != null ? calendarDayData.twoDaysAgo.color : 'lightgray'">
             <div class="d-flex justify-content-center align-items-center w-100 h-100">
                 <p>{{ calendarDayData.twoDaysAgo.date | date }}</p>
@@ -41,7 +73,7 @@
                 <span>{{ calendarDayData.twoDaysAgo.date | date }}</span>
             </li>
         </div>
-        <div class="signboard right inner anim04c"
+        <div class="signboard yesterday inner anim04c"
             [style.background-color]="calendarDayData.yesterday.color != null ? calendarDayData.yesterday.color : 'lightgray'">
             <div class="d-flex justify-content-center align-items-center w-100 h-100">
                 <p>{{ calendarDayData.yesterday.date | date }}</p>
@@ -57,22 +89,7 @@
     </div>
 </div>
 
-
-<!-- <div class="card mb-4 mb-xl-0">
-    <div class="card-body">
-        <h1>Set Value for today</h1>
-
-        <pre>{{calendarDayData.today | json }}</pre>
-    
-        <div *ngFor="let item of choices | keyvalue">
-            <label for="enum_answer_{{item.key}}">
-                <input id="enum_answer_{{item.key}}" [value]='item.value' type="radio" name="choices" [(ngModel)]="calendarDayData.today.color">
-                {{ item.key }} - {{ item.value }}<span class="dot" [style.background-color]="item.value"></span>
-            </label>
-        </div>
-    </div>
-</div> -->
-
+<!-- Setter -->
 <div class="card card-stats mb-4 mb-xl-0">
     <div class="card-body">
       <div class="row">

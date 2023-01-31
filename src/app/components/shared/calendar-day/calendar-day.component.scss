@@ -130,7 +130,29 @@ body {
 }
 /*-----*/
 
-.front {
+.twoDaysFromNow {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    -webkit-transform: rotate(-5deg) translate(-4px, 4px);
+    -moz-transform: rotate(-5deg) translate(-4px, 4px);
+    -ms-transform: rotate(-5deg) translate(-4px, 4px);
+    -o-transform: rotate(-5deg) translate(-4px, 4px);
+    transform: rotate(-5deg) translate(-4px, 4px);
+    // background: #3498DB;
+}
+.tomorrow {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    -webkit-transform: rotate(+10deg) translate(7px, 8px);
+    -moz-transform: rotate(+10deg) translate(7px, 8px);
+    -ms-transform: rotate(+10deg) translate(7px, 8px);
+    -o-transform: rotate(+10deg) translate(7px, 8px);
+    transform: rotate(+10deg) translate(7px, 8px);
+    // background: #EFC94C;
+}
+.today {
     position: absolute;
     top: 0;
     left: 0;
@@ -138,7 +160,7 @@ body {
     // background: #ff726b;
     text-align: center;
 }
-.right {
+.yesterday {
     position: absolute;
     right: 0;
     z-index: 2;
@@ -149,7 +171,7 @@ body {
     transform: rotate(-10deg) translate(7px, 8px);
     // background: #EFC94C;
 }
-.left {
+.twoDaysAgo {
     position: absolute;
     left: 0;
     z-index: 1;
@@ -178,7 +200,7 @@ body {
     -o-transform: rotate(0) translate(0) scale(0.9);
     transform: rotate(0) translate(0) scale(0.9);
 }
-.outer:active .front {
+.outer:active .today {
     -webkit-transform: rotate(0) translate(0);
     -moz-transform: rotate(0) translate(0);
     -ms-transform: rotate(0) translate(0);
@@ -186,15 +208,15 @@ body {
     transform: rotate(0) translate(0);
 }
 
-// .outer:active .front .date {
+// .outer:active .today .date {
 //     -webkit-transform: scale(0);
 //     -moz-transform: scale(0);
 //     -ms-transform: scale(0);
 //     -o-transform: scale(0);
 //     transform: scale(0);
 // }
-// .outer:active .front .day,
-// .outer:active .front .month {
+// .outer:active .today .day,
+// .outer:active .today .month {
 //     visibility: hidden;
 //     opacity: 0;
 //     -webkit-transform: scale(0);
@@ -204,14 +226,30 @@ body {
 //     transform: scale(0);
 // }
 
-.outer:active .right {
+.outer:active .twoDaysFromNow {
+    -webkit-transform: rotate(+2deg) translateX(+480px) scale(0.9);
+    -moz-transform: rotate(+2deg) translateX(+480px) scale(0.9);
+    -ms-transform: rotate(+2deg) translateX(+480px) scale(0.9);
+    -o-transform: rotate(+2deg) translateX(+480px) scale(0.9);
+    transform: rotate(+2deg) translateX(+480px) scale(0.9);
+}
+.outer:active .tomorrow {
+    -webkit-transform: rotate(+5deg) translateX(+240px) scale(0.9);
+    -moz-transform: rotate(+5deg) translateX(+240px) scale(0.9);
+    -ms-transform: rotate(+5deg) translateX(+240px) scale(0.9);
+    -o-transform: rotate(+5deg) translateX(+240px) scale(0.9);
+    transform: rotate(+5deg) translateX(+240px) scale(0.9);
+}
+
+
+.outer:active .yesterday {
     -webkit-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     -moz-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     -ms-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     -o-transform: rotate(-5deg) translateX(-240px) scale(0.9);
     transform: rotate(-5deg) translateX(-240px) scale(0.9);
 }
-.outer:active .left {
+.outer:active .twoDaysAgo {
     -webkit-transform: rotate(-2deg) translateX(-480px) scale(0.9);
     -moz-transform: rotate(-2deg) translateX(-480px) scale(0.9);
     -ms-transform: rotate(-2deg) translateX(-480px) scale(0.9);
