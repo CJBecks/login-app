@@ -15,3 +15,13 @@ https://rapidapi.com/competitive-intelligence-solutions-llc-competitive-intellig
 https://rapidapi.com/vinfreecheck/api/vin-decoder-1/
 
 https://rapidapi.com/collection/autotrader-api
+
+
+MY VIN - 1zvbp8am3d5211994
+
+
+
+Calendar apps
+- Day View: https://codepen.io/mselmany/pen/kKOJVW
+- Monthly View: https://codepen.io/davidkpiano/pen/xwyVXO OR https://codepen.io/davidkpiano/full/wBGjMr
+- Year View: https://preview.colorlib.com/theme/bootstrap/calendar-03/ OR https://year-calendar.github.io/js-year-calendar/examples.html
