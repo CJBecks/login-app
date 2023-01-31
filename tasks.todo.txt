@@ -25,3 +25,7 @@ Calendar apps
 - Day View: https://codepen.io/mselmany/pen/kKOJVW
 - Monthly View: https://codepen.io/davidkpiano/pen/xwyVXO OR https://codepen.io/davidkpiano/full/wBGjMr
 - Year View: https://preview.colorlib.com/theme/bootstrap/calendar-03/ OR https://year-calendar.github.io/js-year-calendar/examples.html
+
+
+FLOW CHART FOR WHERE TO PUT MONEY
+https://i.imgur.com/zlGnuDO.png
