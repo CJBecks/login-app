@@ -19,3 +19,29 @@ https://rapidapi.com/collection/autotrader-api
 
 FLOW CHART FOR WHERE TO PUT MONEY
 https://i.imgur.com/zlGnuDO.png
+
+
+
+
+AI Merch:
+
+connorjamesbecker@gmail.com
+
+Printful:
+https://www.printful.com/dashboard/default
+
+Access key
+nOqjXCJWqjs5YETVkhujymUKmGt2jh0oVMYTczO3
+CdyIWCt7CYFMKPspyZO741PB2KuNU9N7iqaNlePJ
+
+Product ID
+302093338
+
+Dev Docs -https://developers.printful.com/docs/
+
+Shopify:
+https://6debd3.myshopify.com/admin
+
+https://partners.shopify.com/2853253/apps/32340213761/overview
+
+API Admin - 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
