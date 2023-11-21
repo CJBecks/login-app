@@ -50,16 +50,16 @@
             <i class="ni ni-settings-gear-65"></i>
             <span>Settings</span>
           </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+          <!-- <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-calendar-grid-58"></i>
             <span>Activity</span>
           </a>
           <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
             <i class="ni ni-support-16"></i>
             <span>Support</span>
-          </a>
+          </a> -->
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="signOut()">
+          <a class="dropdown-item" role="button" (click)="signOut()">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>
