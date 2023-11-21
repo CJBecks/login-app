@@ -100,7 +100,8 @@
         <div class="row">
             <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">Set Value for today (<b>{{
-                        calendarDayData.today.date | date }}</b>)</h5>
+                        calendarDayData.today.date | date }}</b>)
+            </h5>
             </div>
         </div>
 
@@ -112,5 +113,10 @@
                 <span>{{ item.value.description }}</span>
             </label>
         </div>
+        <hr class="m-1" />
+        <label>
+            <span class="dot mx-2" [style.background-color]="'lightgray'"></span>
+            <span>No Value Set</span>
+        </label>
     </div>
 </div>

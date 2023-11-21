@@ -28,6 +28,11 @@ export class CalendarDayComponent implements OnInit {
             2: { description: 'Second Choice', color: '#3498DB' },
             3: { description: 'Third Choice', color: '#EFC94C' },
         }
+
+        // Current
+        this.calendarDayData.today.value = 2;
+        this.calendarDayData.today.color = this.choices[this.calendarDayData.today.value].color;
+        this.calendarDayData.today.description = this.choices[this.calendarDayData.today.value].description;
         
         // Get values from local-storage if they exist.
         this.calendarDayData.twoDaysAgo.value = 1;
@@ -36,7 +41,7 @@ export class CalendarDayComponent implements OnInit {
 
         this.calendarDayData.yesterday.value = 2;
         this.calendarDayData.yesterday.color = this.choices[this.calendarDayData.yesterday.value].color;
-        this.calendarDayData.yesterday.description = this.choices[this.calendarDayData.twoDaysAgo.value].description;
+        this.calendarDayData.yesterday.description = this.choices[this.calendarDayData.yesterday.value].description;
 
     }
 
