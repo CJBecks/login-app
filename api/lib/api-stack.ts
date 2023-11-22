@@ -26,20 +26,20 @@ export class ApiStack extends cdk.Stack {
         : DEFAULT_DB_ENDPOINT;
 
     // DynamoDB Table
-    const customerTable = new dynamodb.Table(this, "CustomerTable", {
-      partitionKey: { name: "customerId", type: dynamodb.AttributeType.STRING },
+    const usersTable = new dynamodb.Table(this, "Users", {
+      partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
     });
 
     // Lambda function for setting customer data
-    const setCustomerFunction = new lambda.Function(
+    const setUserFunction = new lambda.Function(
       this,
-      "SetCustomerFunction",
+      "SetUserFunction",
       {
         runtime: lambda.Runtime.NODEJS_16_X,
         handler: "set-user.handler",
         code: lambda.Code.fromAsset(path.join(__dirname, "..", "lambda/users")),
         environment: {
-          TABLE_NAME: customerTable.tableName,
+          TABLE_NAME: usersTable.tableName,
           DB_ENDPOINT: dbEndpoint,
           LOCAL_TABLE_NAME: USERS_TABLE_NAME,
         },
@@ -47,18 +47,18 @@ export class ApiStack extends cdk.Stack {
     );
 
     // Grant permissions to the Lambda function to access DynamoDB
-    customerTable.grantReadWriteData(setCustomerFunction);
+    usersTable.grantReadWriteData(setUserFunction);
 
     // Lambda function for getting customer data
-    const getCustomerFunction = new lambda.Function(
+    const getUserFunction = new lambda.Function(
       this,
-      "GetCustomerFunction",
+      "GetUserFunction",
       {
         runtime: lambda.Runtime.NODEJS_16_X,
         handler: "get-user.handler",
         code: lambda.Code.fromAsset(path.join(__dirname, "..", "lambda/users")),
         environment: {
-          TABLE_NAME: customerTable.tableName,
+          TABLE_NAME: usersTable.tableName,
           DB_ENDPOINT: dbEndpoint,
           LOCAL_TABLE_NAME: USERS_TABLE_NAME,
         },
@@ -66,15 +66,15 @@ export class ApiStack extends cdk.Stack {
     );
 
     // Grant permissions to the Lambda function to access DynamoDB
-    customerTable.grantReadData(getCustomerFunction);
+    usersTable.grantReadData(getUserFunction);
 
     // API Gateway
     const api = new apigateway.RestApi(this, "CustomerApi");
     const setCustomerIntegration = new apigateway.LambdaIntegration(
-      setCustomerFunction
+      setUserFunction
     );
     const getCustomerIntegration = new apigateway.LambdaIntegration(
-      getCustomerFunction
+      getUserFunction
     );
 
     const customerResource = api.root.addResource("customer");
