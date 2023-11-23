@@ -6,6 +6,7 @@
     "start": "ng serve",
     "start-local": "ng serve --configuration=local",
     "build": "ng build",
+    "deploy": "aws s3 sync ./dist s3://login-app-site",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
