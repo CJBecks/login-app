@@ -3,6 +3,7 @@ import Chart from 'chart.js';
 import { CognitoService } from 'src/app/common/cognito.service';
 import { UserService } from 'src/app/common/user.service';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 // core components
 import {
@@ -62,11 +63,24 @@ export class DashboardComponent implements OnInit {
         });
       const requestOptions = { headers: headers };
       this.http
-          .get('https://dzdggqurla.execute-api.us-east-1.amazonaws.com/test', requestOptions)
+          .get(`${environment.api.protectedEndpoint}/test`, requestOptions)
           .subscribe((res: any) => {
               console.log(res);
           });
   }
+
+  public callUserEndpoint() {
+    const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.userService.activeUser.jwt}`
+      });
+    // const requestOptions = { headers: headers };
+    const params = { userId: '0acac770-1fbb-40ac-939b-c91a2a28ad4f' };
+    this.http
+        .get(`${environment.api.userApi}`, { params, headers })
+        .subscribe((res: any) => {
+            console.log(res);
+        });
+}
 
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;

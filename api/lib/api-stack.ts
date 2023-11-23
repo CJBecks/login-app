@@ -30,7 +30,7 @@ export class ApiStack extends cdk.Stack {
       partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
     });
 
-    // Lambda function for setting customer data
+    // Lambda function for setting user data
     const setUserFunction = new lambda.Function(
       this,
       "SetUserFunction",
@@ -49,7 +49,7 @@ export class ApiStack extends cdk.Stack {
     // Grant permissions to the Lambda function to access DynamoDB
     usersTable.grantReadWriteData(setUserFunction);
 
-    // Lambda function for getting customer data
+    // Lambda function for getting user data
     const getUserFunction = new lambda.Function(
       this,
       "GetUserFunction",
@@ -69,16 +69,21 @@ export class ApiStack extends cdk.Stack {
     usersTable.grantReadData(getUserFunction);
 
     // API Gateway
-    const api = new apigateway.RestApi(this, "CustomerApi");
-    const setCustomerIntegration = new apigateway.LambdaIntegration(
-      setUserFunction
+    const api = new apigateway.RestApi(this, "UserApi", {
+      defaultCorsPreflightOptions: {
+        allowOrigins: apigateway.Cors.ALL_ORIGINS,
+        allowMethods: apigateway.Cors.ALL_METHODS,
+      },
+    });
+    const setUserIntegration = new apigateway.LambdaIntegration(
+      setUserFunction,
     );
-    const getCustomerIntegration = new apigateway.LambdaIntegration(
+    const getUserIntegration = new apigateway.LambdaIntegration(
       getUserFunction
     );
 
-    const customerResource = api.root.addResource("customer");
-    customerResource.addMethod("POST", setCustomerIntegration);
-    customerResource.addMethod("GET", getCustomerIntegration);
+    const userResource = api.root.addResource("user");
+    userResource.addMethod("POST", setUserIntegration);
+    userResource.addMethod("GET", getUserIntegration);
   }
 }

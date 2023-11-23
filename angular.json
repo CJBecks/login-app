@@ -61,6 +61,28 @@
                 }
               ]
             },
+            "local": {
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "buildOptimizer": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": false,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
+            },
             "development": {
               "vendorChunk": true,
               "extractLicenses": false,
@@ -87,6 +109,9 @@
           "configurations": {
             "production": {
               "browserTarget": "argon-dashboard-angular:build:production"
+            },
+            "local": {
+              "browserTarget": "argon-dashboard-angular:build:local"
             },
             "development": {
               "browserTarget": "argon-dashboard-angular:build:development"
