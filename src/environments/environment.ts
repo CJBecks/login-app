@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   cognito: {
-    userPoolId: 'us-east-1_q8enXCS9S',
-    userPoolWebClientId: '5n7a4o98oa5hj5qahejd0fh30l',
+    userPoolId: 'us-east-1_bqgaiMpmz',
+    userPoolWebClientId: '5tiggfvlbr6i5vgbsme33bs6v7',
   },
   api: {
     protectedEndpoint: 'https://dzdggqurla.execute-api.us-east-1.amazonaws.com/',
