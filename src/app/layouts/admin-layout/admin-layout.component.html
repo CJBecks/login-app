@@ -1,5 +1,9 @@
 <!-- Sidenav -->
 <app-sidebar></app-sidebar>
+<!-- User Data -->
+<div class="main-content">
+  <pre>Active User: {{ this.userService.activeUser | json }}</pre>
+</div>
 <div class="main-content">
   <!-- Top navbar -->
   <app-navbar></app-navbar>

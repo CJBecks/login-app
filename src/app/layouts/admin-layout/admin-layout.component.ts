@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/common/user.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AdminLayoutComponent {
 
-  constructor() {}
+  constructor(public userService: UserService) {}
 }

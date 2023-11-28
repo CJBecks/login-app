@@ -2,12 +2,17 @@
   <div class="container-fluid">
     <div class="header-body">
 
-      <div>
-        <button type="button" class="btn btn-primary my-4" (click)="callEndpoint();">Call Endpoint</button>
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-primary my-4" (click)="callUserEndpoint();">Get User</button>
+      <div class="row mb-5">
+        <div class="col-lg-6">
+          <button type="button" class="btn btn-primary my-4" (click)="callUserEndpoint();">Get User</button>
+          <h2>User Data:</h2>
+          <pre>{{ userData | json }}</pre>
+        </div>
+        <div class="col-lg-6">
+          <button type="button" class="btn btn-primary my-4" (click)="callSetUserEndpoint();">Set User</button>
+          <h2>Set Data:</h2>
+          <pre>{{ setUserData | json }}</pre>
+        </div>
       </div>
 
       <!-- Card stats -->
